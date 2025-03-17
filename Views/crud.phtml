@@ -1,0 +1,154 @@
+<?php require('template/header.phtml'); ?>
+
+    <main class="facility-page container">
+        <section class="facility-intro">
+            <h1>Explore Eco-Friendly Facilities</h1>
+            <p class="facility-description">Discover and contribute to eco-friendly facilities across the community.</p>
+        </section>
+
+        <!-- Search and Sorting Form -->
+        <form method="get" action="crud.php" class="search-form">
+            <!-- Search Input -->
+            <input type="text" name="q" placeholder="Search..." value="<?= $view->query; ?>">
+
+            <!-- Filter Dropdown -->
+            <select name="filter">
+                <option value="all" <?= ($view->filter === 'all') ? 'selected' : ''; ?>>All</option>
+                <option value="title" <?= ($view->filter === 'title') ? 'selected' : ''; ?>>Title</option>
+                <option value="description" <?= ($view->filter === 'description') ? 'selected' : ''; ?>>Description</option>
+                <option value="category" <?= ($view->filter === 'category') ? 'selected' : ''; ?>>Category</option>
+                <option value="county" <?= ($view->filter === 'county') ? 'selected' : ''; ?>>County</option>
+                <option value="town" <?= ($view->filter === 'town') ? 'selected' : ''; ?>>Town</option>
+                <option value="postcode" <?= ($view->filter === 'postcode') ? 'selected' : ''; ?>>Postcode</option>
+                <option value="streetName" <?= ($view->filter === 'streetName') ? 'selected' : ''; ?>>Street</option>
+            </select>
+
+            <!-- Sorting Dropdown -->
+            <select name="sort">
+                <option value="none" <?= ($view->sort === 'none') ? 'selected' : ''; ?>>None</option>
+                <option value="title_asc" <?= ($view->sort === 'title_asc') ? 'selected' : ''; ?>>Title (A-Z)</option>
+                <option value="title_desc" <?= ($view->sort === 'title_desc') ? 'selected' : ''; ?>>Title (Z-A)</option>
+                <option value="town_asc" <?= ($view->sort === 'town_asc') ? 'selected' : ''; ?>>Town (A-Z)</option>
+                <option value="town_desc" <?= ($view->sort === 'town_desc') ? 'selected' : ''; ?>>Town (Z-A)</option>
+                <option value="county_asc" <?= ($view->sort === 'county_asc') ? 'selected' : ''; ?>>County (A-Z)</option>
+                <option value="county_desc" <?= ($view->sort === 'county_desc') ? 'selected' : ''; ?>>County (Z-A)</option>
+                <option value="postcode_asc" <?= ($view->sort === 'postcode_asc') ? 'selected' : ''; ?>>Postcode (A-Z)</option>
+                <option value="postcode_desc" <?= ($view->sort === 'postcode_desc') ? 'selected' : ''; ?>>Postcode (Z-A)</option>
+                <option value="category_asc" <?= ($view->sort === 'category_asc') ? 'selected' : ''; ?>>Category (A-Z)</option>
+                <option value="category_desc" <?= ($view->sort === 'category_desc') ? 'selected' : ''; ?>>Category (Z-A)</option>
+                <option value="contributor_asc" <?= ($view->sort === 'contributor_asc') ? 'selected' : ''; ?>>Contributor (A-Z)</option>
+                <option value="contributor_desc" <?= ($view->sort === 'contributor_desc') ? 'selected' : ''; ?>>Contributor (Z-A)</option>
+                <option value="status_asc" <?= ($view->sort === 'status_asc') ? 'selected' : ''; ?>>Status (A-Z)</option>
+                <option value="status_desc" <?= ($view->sort === 'status_desc') ? 'selected' : ''; ?>>Status (Z-A)</option>
+            </select>
+
+            <button type="submit" class="btn-search">Search</button>
+            <a href="crud.php" class="btn-clear">Clear</a>
+        </form>
+
+        <!-- Create New Facility Button (Admin Only) -->
+        <?php if (isset($_SESSION['user_id']) && $_SESSION['role'] == 1): ?>
+            <div class="top-action-create">
+                <a href="createFacility.php" class="btn-create">+ Create New Facility</a>
+            </div>
+        <?php endif; ?>
+
+        <!-- Facilities Table -->
+        <section class="facility-list">
+            <div class="responsive-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>House No.</th>
+                        <th>Street</th>
+                        <th>County</th>
+                        <th>Town</th>
+                        <th>Postcode</th>
+                        <th>Longitude</th>
+                        <th>Latitude</th>
+                        <th>Contributor</th>
+                        <th>Status</th>
+                        <?php if (isset($_SESSION['user_id']) && ($_SESSION['role'] == 1 || $_SESSION['role'] == 2)): ?>
+                            <th>Actions</th>
+                        <?php endif; ?>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php if (!empty($view->facilities)): ?>
+                        <?php foreach ($view->facilities as $facility): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($facility['id']); ?></td>
+                                <td><?= htmlspecialchars($facility['title']); ?></td>
+                                <td><?= htmlspecialchars($facility['category']); ?></td>
+                                <td><?= htmlspecialchars($facility['description']); ?></td>
+                                <td><?= htmlspecialchars($facility['houseNumber']); ?></td>
+                                <td><?= htmlspecialchars($facility['streetName']); ?></td>
+                                <td><?= htmlspecialchars($facility['county']); ?></td>
+                                <td><?= htmlspecialchars($facility['town']); ?></td>
+                                <td><?= htmlspecialchars($facility['postcode']); ?></td>
+                                <td><?= htmlspecialchars($facility['lng']); ?></td>
+                                <td><?= htmlspecialchars($facility['lat']); ?></td>
+                                <td><?= htmlspecialchars($facility['contributor']); ?></td>
+                                <td>
+                                    <?php if (isset($_SESSION['user_id']) && $_SESSION['role'] == 2): ?>
+                                        <!-- Status Dropdown for Browsing Users -->
+                                        <select name="statusComment" form="statusForm_<?= $facility['id']; ?>">
+                                            <?php foreach ($view->allowedStatuses as $status): ?>
+                                                <option value="<?= htmlspecialchars($status); ?>" <?= ($facility['statusComment'] === $status ? 'selected' : ''); ?>>
+                                                    <?= htmlspecialchars($status); ?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    <?php else: ?>
+                                        <!-- Display Status for Non-Browsing Users -->
+                                        <?= htmlspecialchars($facility['statusComment'] ?? 'Pending'); ?>
+                                    <?php endif; ?>
+                                </td>
+                                <?php if (isset($_SESSION['user_id']) && ($_SESSION['role'] == 1 || $_SESSION['role'] == 2)): ?>
+                                    <td>
+                                        <?php if ($_SESSION['role'] == 1): ?>
+                                            <!-- Admin Actions: Edit and Delete -->
+                                            <a href="editFacility.php?id=<?= $facility['id']; ?>" class="btn-warning">Edit</a>
+                                            <form method="post" action="crud.php" style="display:inline;">
+                                                <input type="hidden" name="id" value="<?= $facility['id']; ?>">
+                                                <button type="submit" name="delete" class="btn-danger" onclick="return confirm('Are you sure you want to delete this facility?');">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        <?php elseif ($_SESSION['role'] == 2): ?>
+                                            <!-- Update Button for Browsing Users -->
+                                            <form method="post" action="crud.php" id="statusForm_<?= $facility['id']; ?>">
+                                                <input type="hidden" name="id" value="<?= htmlspecialchars($facility['id']); ?>">
+                                                <button type="submit" name="update_status" class="btn-update">Update</button>
+                                            </form>
+                                        <?php endif; ?>
+                                    </td>
+                                <?php endif; ?>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="14">No facilities found.</td>
+                        </tr>
+                    <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <?php for ($i = 1; $i <= $view->totalPages; $i++): ?>
+                <a href="crud.php?page=<?= $i; ?>&q=<?= $view->query; ?>&filter=<?= $view->filter; ?>&sort=<?= $view->sort; ?>"
+                   class="<?= $i == $view->currentPage ? 'active' : ''; ?>">
+                    <?= $i; ?>
+                </a>
+            <?php endfor; ?>
+        </div>
+    </main>
+
+<?php require('template/footer.phtml'); ?>

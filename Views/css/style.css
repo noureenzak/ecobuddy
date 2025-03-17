@@ -1,0 +1,1292 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dark-green: #284c36;
+    --light-green: #ebffe0;
+    --white: #ffffff;
+    --primary-blue: rgb(48, 108, 75);
+
+    /* these are the colors that will be mostly use din the project */
+    --btn-bg-color: #dbf6c5;
+    --btn-text-color: #284c36;
+    --btn-hover-bg-color: #2a533d;
+    --btn-hover-text-color: #c6e4b7;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* center children horizontally */
+    justify-content: center;
+    width: 100%; /* ensure the parent takes full width */
+}
+
+/* Full Page Layout */
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--dark-green);
+    padding: 20px 50px;
+    width: 100%;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 80px;
+    margin-right: 15px;
+}
+
+/* ecoBuddy Text */
+.site-title {
+    color: white;
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+/* Nav Links */
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--light-green);
+}
+
+.navbar-search {
+    display: flex;
+    align-items: center;
+    background-color: var(--white);
+    border-radius: 50px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 2.5px 5px;
+    width: 50%;
+    max-width: 400px;
+    margin-left: auto;
+}
+
+.navbar-search input[type="text"] {
+    flex: 1;
+    padding: 5px 10px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+}
+
+.navbar-search .btn-search {
+    padding: 5px 10px;
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-search .btn-search:hover {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+}
+
+
+/* Hero Section */
+.hero {
+    background-color: var(--dark-green);
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 120px 10%;
+    width: 100%;
+}
+
+.hero-text {
+    max-width: 50%;
+}
+
+/* Uniform Hero Text (Local Facilities + Global Impact) */
+.hero h1 {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+.hero p,
+.about-text p {
+    font-size: 20px;  /* Keep this size */
+    line-height: 1.7;  /* Spacing between lines */
+    color: var(--white);  /* Keeps the white text for hero section */
+    margin-bottom: 20px;
+}
+
+
+/* styling of the two buttons in the home page */
+.hero-text a.btn-home-page,
+.hero-text button.btn-home-page {
+    background-color: var(--btn-bg-color); /* Use new variable */
+    color: var(--btn-text-color); /* Use new variable */
+    padding: 14px 40px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.btn-home-page:hover {
+    background-color: var(--btn-hover-bg-color); /* Use new variable */
+    color: var(--btn-hover-text-color); /* Use new variable */
+    box-shadow: 0 8px 25px rgb(144, 182, 107);
+    transform: translateY(-4px);
+}
+
+/* Login Section */
+.login-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    min-height: 100vh; /* Full viewport height */
+    background-color: var(--light-green);
+    padding: 20px;
+    text-align: center;
+    width: 100%; /* Ensure it takes full width */
+    max-width: 600px; /* Optional: Limit width for better readability */
+    margin: 0 auto; /* Center the section */
+}
+
+.login-section h2 {
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--dark-green);
+}
+.index-phtml.login-section{
+    max-width: 100%;
+}
+/* Ensure light green background spans the entire width */
+.login-page.login-section {
+    background-color: var(--light-green);
+    width: 100%; /* Full width of the viewport */
+    min-height: 100vh; /* Full height of the viewport */
+    display: flex; /* Align children properly */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove padding */
+}
+.login-section p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: var(--dark-green);
+}
+
+.login-section .btn-home-page {
+    background-color: var(--dark-green);
+    color: white;
+    padding: 14px 40px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.login-section .btn-home-page:hover {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+    box-shadow: 0 8px 25px rgba(48, 108, 75, 0.3);
+    transform: translateY(-4px);
+}
+.login-form {
+    width: 100%; /* Full width of the parent container */
+    max-width: 4000px; /* Adjust this value to make the form wider */
+    padding-left: 220px;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+/* Footer */
+.footer {
+    background-color: var(--dark-green);
+    color: var(--white);
+    text-align: center;
+    padding: 20px 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    margin-top: auto;
+    width: 100%;
+}
+
+.footer a {
+    color: var(--light-green);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+}
+
+.footer a:hover {
+    color: var(--white);
+}
+
+/* About Section */
+.about {
+    display: flex;
+    justify-content: center; /* Center the entire section horizontally */
+    align-items: center; /* Center the entire section vertically */
+    padding: 100px 10%;
+    background-color: var(--white);
+    width: 100%;
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto; /* Center the container */
+
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 160px; /* Space between text and image */
+    width: 85%; /* Ensure the row takes full width */
+}
+
+.about-text {
+    flex: 1;
+    align-content: center;
+    align-items: center;
+    max-width: 70%; /* Adjust width as needed */
+    padding-left: 10%; /* Shift text to the right */
+}
+
+.about-text h2 {
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--dark-green);
+}
+
+.about-text p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.uk-map {
+    flex: 1;
+    max-height: 40%;
+    max-width: 40%; /* Adjust width as needed */
+    padding-right: 10%; /* Shift image to the right */
+}
+
+.map-image {
+    width: 350px;
+    height: auto;
+}
+
+/* Responsive About Section */
+@media (max-width: 768px) {
+    .about .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image {
+        margin-top: 30px;
+        max-width: 70%;
+    }
+}
+/* Facility Intro Section */
+.facility-intro {
+    text-align: center;
+    margin: 60px 0 30px;
+}
+
+.facility-intro h1 {
+    font-size: 60px;
+    font-weight: 700;
+    color: var(--dark-green);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+
+.facility-description {
+    font-size: 20px;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto 60px;
+    line-height: 1.8;
+}
+/* Table Section */
+.facility-list {
+    width: 90%;  /* Match button width */
+    max-width: 1300px;  /* Optional limit to avoid full screen */
+    margin: 0 auto;  /* Center the table */
+    overflow-x: hidden;  /* Remove horizontal scrollbar */
+}
+
+.facility-list table {
+    width: 100%;  /* Ensure the table fills the container */
+    border-collapse: collapse;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    table-layout: auto;  /* Allow flexible width */
+}
+
+/* Table Header and Cells */
+.facility-list th,
+.facility-list td {
+    padding: 16px;
+    border: 1px solid #ddd;
+    text-align: center;
+    white-space: nowrap;  /* Prevent word breaks */
+    overflow: hidden;
+}
+
+/* Header Styling */
+.facility-list th {
+    background-color: var(--dark-green);
+    color: white;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+/* Ensure Full Width and No Text Cuts */
+.facility-list th,
+.facility-list td {
+    min-width: 90px;  /* Keep narrow columns readable */
+    max-width: 250px; /* Prevent overly wide columns */
+}
+
+/* Stretch Actions Column */
+.facility-list th:last-child,
+.facility-list td:last-child {
+    min-width: 150px;  /* Expand action column */
+}
+
+
+/* Hover Effect */
+.facility-list tr:hover {
+    background-color: var(--light-green);
+    cursor: pointer;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .facility-list {
+        width: 100%;  /* Table adapts to full width on smaller screens */
+    }
+
+    .facility-list th,
+    .facility-list td {
+        font-size: 14px;  /* Slightly smaller text on mobile */
+        min-width: 80px;  /* Adjust minimum width to fit small screens */
+    }
+}
+
+
+/* Uniform Button Size for CRUD Actions */
+.facility-list .btn-warning,
+.btn-danger,
+.btn-success {
+    padding: 5px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    width: 90px; /* Ensures same width */
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    margin: 5px 3px;
+}
+
+/* Increase specificity */
+.facility-list .btn-warning {
+    background-color: #d5900f; /* Orange */
+    color: white;
+}
+
+.facility-list .btn-warning:hover {
+    background-color: #fbbf75; /* Darker orange */
+    color: white;
+}
+
+.btn-danger {
+    background-color: #772028;
+    color: white;
+}
+
+.btn-success {
+    background-color: #648147;
+    color: white;
+}
+
+
+.btn-danger:hover {
+    background-color: #870c19;
+}
+
+.btn-success:hover {
+    background-color: #90b66b;
+}
+
+.facility-list {
+    overflow-x: auto;
+    margin-bottom: 30px;
+}
+
+.pagination{
+    text-align: center;
+    margin: 40px 0;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.pagination a {
+    padding: 12px 20px;
+    margin: 0 5px;
+    background-color: #ddd;
+    color: var(--dark-green);
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.pagination a:hover {
+    background-color: #dbf6c5;
+}
+
+.pagination a.active {
+    background-color: var(--dark-green);
+    color: white;
+}
+
+/* Form Container for Create and Edit Pages */
+.form-container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: var(--light-green); /* Light green form background */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Headings */
+.form-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--dark-green);
+}
+
+/* Form Labels */
+.form-container label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Form Inputs & Textareas */
+.form-container input[type="text"],
+.form-container input[type="number"], /* Add this line */
+.form-container textarea,
+.form-container select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
+}
+
+/* Form Input Focus */
+.form-container input:focus,
+.form-container textarea:focus,
+.form-container select:focus {
+    border-color: var(--primary-blue);
+    outline: none;
+}
+
+/* Form Submit Button */
+.form-container button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+    background-color: var(--light-green);  /* Light green hover */
+    color: var(--dark-green);
+}
+
+
+/* Error Messages */
+.error {
+    color: #dc3545;
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Cancel Button */
+.cancel-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #ccc;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    margin-top: 10px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.cancel-btn:hover {
+    background-color: #b3b3b3;
+}
+
+/* Form Container for Delete Page */
+.form-container {
+    width: 50%;
+    margin: 100px auto;
+    padding: 40px;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Form Heading */
+.form-container h1 {
+    font-size: 42px;
+    color: var(--dark-green);
+    margin-bottom: 20px;
+}
+
+/* Paragraph Styling */
+.form-container p {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Button Styles */
+.form-container button,
+.cancel-btn {
+    padding: 15px 35px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 15px;
+}
+
+/* Delete Button (Danger) */
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Cancel Button (Primary) */
+.cancel-btn {
+    background-color: #ddd;
+    color: black;
+    transition: background-color 0.3s ease;
+}
+
+.cancel-btn:hover {
+    background-color: #b3b3b3;
+}
+.facility-list {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    overflow-x: auto;  /* Enable horizontal scrolling */
+}
+
+.facility-list table {
+    width: 1300px;  /* Ensures table is wide enough to require scroll */
+    border-collapse: collapse;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.facility-list th,
+.facility-list td {
+    padding: 16px;
+    border: 1px solid #ddd;
+    text-align: center;
+    white-space: normal;  /* Allow text wrapping */
+    word-break: break-word;  /* Break long words if needed */
+    min-width: 130px;  /* Minimum width */
+    max-width: 230px;  /* Allow space for wrapping */
+}
+
+.facility-list th {
+    background-color: var(--dark-green);
+    color: white;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+/* Button Alignment */
+.top-action-create {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.top-action-create .btn-create {
+    margin-top: 60px; /* Increased space above the button */
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-weight: 600;
+    background-color: var(--primary-blue);
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;}
+
+
+.top-action-create .btn-create:hover {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(144, 182, 107, 0.3);
+}
+
+/* Custom Scrollbar */
+.facility-list::-webkit-scrollbar {
+    height: 12px;
+}
+
+.facility-list::-webkit-scrollbar-track {
+    background: #f0f0f0;  /* Light track */
+    border-radius: 10px;
+}
+
+.facility-list::-webkit-scrollbar-thumb {
+    background: #555559;  /* Dark thumb */
+    border-radius: 10px;
+    border: 2px solid #f0f0f0;  /* Creates padding effect */
+}
+
+.facility-list::-webkit-scrollbar-thumb:hover {
+    background: #333;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .facility-list th,
+    .facility-list td {
+        font-size: 14px;
+        min-width: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .facility-list th,
+    .facility-list td {
+        font-size: 12px;
+        min-width: 70px;
+    }
+
+    .top-action-create {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .top-action-create .btn-create {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.search-form, .top-actions {
+    margin: 30px auto;
+    width: fit-content;
+}
+
+.search-form input[type="text"] {
+    width: 400px;
+    padding: 15px 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+}
+
+.top-actions .btn-primary {
+    padding: 16px 50px;
+    font-size: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    background-color: #1E7D32;  /* Darker green for contrast */
+}
+/* Login Section */
+.login-form {
+    background-color: var(--light-green);
+    min-height: 100vh;
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    align-items: center;
+}
+
+.card {
+    background-color: var(--white);
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card h1 {
+    font-size: 2.5rem;
+    color: var(--dark-green);
+}
+
+.card p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.card .form-control {
+    border-radius: 10px;
+    height: 50px;
+    font-size: 1rem;
+}
+
+.login-label {
+    color: var(--dark-green);
+    margin: 15px 0 25px 0;
+}
+
+.card .btn {
+    border-radius: 10px;
+    padding: 15px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    background-color: var(--primary-blue);
+    border: none;
+    color: white;
+}
+
+.card .btn:hover {
+    background-color: #dbf6c5;
+}
+
+/* Error Alert */
+.alert-danger {
+    padding: 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .card {
+        padding: 30px;
+    }
+
+    .card h1 {
+        font-size: 2rem;
+    }
+
+    .card .btn {
+        font-size: 1rem;
+    }
+}
+.forgot-password {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.forgot-link{
+    color: #b0b0b0; /* Light gray color */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: default; /* Makes it look non-clickable */
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+.back-button{
+    display: inline-block;
+    color: #6c757d;  /* Subtle grey for minimalistic look */
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.back-button:hover {
+    color: #495057; /* Slightly darker on hover */
+    text-decoration: underline;
+    cursor: pointer;
+}
+/*select dropdown for create form*/
+/* Status Dropdown Styling */
+.form-container select[name="status"] {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    appearance: auto;
+    background-size: 12px;
+    background-color: var(--white);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+
+/* Placeholder Option (Default) */
+.form-container select[name="status"] option[value=""] {
+    color: #888;
+}
+
+/* Focus Effect */
+.form-container select[name="status"]:focus {
+    border-color: var(--primary-blue);
+    outline: none;
+}
+
+/* Status Label */
+.form-container label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+.btn-clear {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #495057;
+    background-color: transparent;
+    text-decoration: none;
+    border: 1px solid rgb(48, 108, 75);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+}
+
+.btn-clear:hover {
+    color: #254c34;  /* Dark green */
+    border-color: #254c34;
+    text-decoration: none;
+    background-color: #dbf6c5;  /* Light green hover */
+}
+/* Style for the edit form inputs */
+.edit-form input[type="text"],
+.edit-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.edit-form textarea {
+    height: 60px;
+    resize: vertical;
+}
+
+/* Style for the buttons in the actions column */
+.edit-form .btn-success,
+.edit-form .btn-clear {
+    padding: 6px 12px;
+    margin: 4px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.edit-form .btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.edit-form .btn-clear {
+    background-color: #6c757d;
+    color: white;
+}
+
+.edit-form .btn-success:hover {
+    background-color: #218838;
+}
+
+.edit-form .btn-clear:hover {
+    background-color: #5a6268;
+}
+
+/* Ensure the table cells are aligned properly */
+.responsive-table td {
+    vertical-align: top;
+}
+/* Center the search form */
+.facility-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically (optional) */
+    width: 100%;
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto; /* Center the container itself */
+    padding: 20px;
+}
+
+/* Search and Sorting Form */
+.search-form {
+    display: flex;
+    align-items: center;
+    margin: 0 auto; /* Center the container */
+    gap: 10px;
+    padding: 15px;
+    background-color: var(--light-green);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px; /* Adjust as needed */
+}
+
+/* Search Input */
+.search-form input[type="text"] {
+    flex: 1;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-form input[type="text"]:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 8px rgba(48, 108, 75, 0.3);
+}
+
+/* Filter and Sorting Dropdowns */
+.search-form select {
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: var(--white);
+    color: var(--dark-green);
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-form select:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 8px rgba(48, 108, 75, 0.3);
+}
+
+/* Search Button */
+.search-form .btn-search {
+    padding: 12px 25px;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.search-form .btn-search:hover {
+    background-color: var(--btn-hover-bg-color);
+    color: var(--btn-hover-text-color);
+    transform: translateY(-2px);
+}
+
+/* Clear Button */
+.search-form .btn-clear {
+    padding: 12px 25px;
+    background-color: var(--white);
+    color: var(--dark-green);
+    border: 1px solid var(--primary-blue);
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.search-form .btn-clear:hover {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+    transform: translateY(-2px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .search-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-form input[type="text"],
+    .search-form select,
+    .search-form .btn-search,
+    .search-form .btn-clear {
+        width: 100%;
+    }
+}
+/* Style for the login section to take full width */
+.full-width-login-section {
+    background-color: var(--light-green);
+    width: 100%; /* Full width of the viewport */
+    padding: 60px 20px; /* Add some padding for better spacing */
+    text-align: center;
+    margin: 0; /* Remove any margins */
+}
+
+.full-width-login-section h2 {
+    font-size: 42px;
+    font-weight: bold;
+    color: var(--dark-green);
+    margin-bottom: 20px;
+}
+
+.full-width-login-section p {
+    font-size: 18px;
+    color: var(--dark-green);
+    margin-bottom: 30px;
+}
+
+.full-width-login-section .btn-home-page {
+    background-color: var(--dark-green);
+    color: white;
+    padding: 14px 40px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.full-width-login-section .btn-home-page:hover {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+    box-shadow: 0 8px 25px rgba(48, 108, 75, 0.3);
+    transform: translateY(-4px);
+}
+.facility-list {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    overflow-x: auto;  /* Enable horizontal scrolling */
+}
+
+.facility-list table {
+    width: 1300px;  /* Ensures table is wide enough to require scroll */
+    border-collapse: collapse;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.facility-list th,
+.facility-list td {
+    padding: 16px;
+    border: 1px solid #ddd;
+    text-align: center;
+    white-space: normal;  /* Allow text wrapping */
+    word-break: break-word;  /* Break long words if needed */
+    min-width: 130px;  /* Minimum width */
+    max-width: 230px;  /* Allow space for wrapping */
+}
+
+.facility-list th {
+    background-color: var(--dark-green);
+    color: white;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+/* Button Alignment */
+.top-action-create {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.top-action-create .btn-create {
+    margin-top: 60px; /* Increased space above the button */
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-weight: 600;
+    background-color: var(--primary-blue);
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.top-action-create .btn-create:hover {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(144, 182, 107, 0.3);
+}
+
+/* Custom Scrollbar */
+.facility-list::-webkit-scrollbar {
+    height: 12px;
+}
+
+.facility-list::-webkit-scrollbar-track {
+    background: #f0f0f0;  /* Light track */
+    border-radius: 10px;
+}
+
+.facility-list::-webkit-scrollbar-thumb {
+    background: #555559;  /* Dark thumb */
+    border-radius: 10px;
+    border: 2px solid #f0f0f0;  /* Creates padding effect */
+}
+
+.facility-list::-webkit-scrollbar-thumb:hover {
+    background: #333;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .facility-list th,
+    .facility-list td {
+        font-size: 14px;
+        min-width: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .facility-list th,
+    .facility-list td {
+        font-size: 12px;
+        min-width: 70px;
+    }
+
+    .top-action-create {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .top-action-create .btn-create {
+        width: 100%;
+        text-align: center;
+    }
+}
+/* Ensure the dropdown and button are aligned properly */
+.facility-list td {
+    vertical-align: middle; /* Align content vertically in the middle */
+}
+
+/* Style the dropdown */
+.facility-list select {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Style the update button */
+.facility-list button {
+    padding: 5px 10px;
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.facility-list button:hover {
+    background-color: var(--btn-hover-bg-color);
+    color: var(--btn-hover-text-color);
+}
+/* Minimalistic Container Styling */
+.manage-user-page .container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(40, 76, 54, 0.89); /* Subtle light grey */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}

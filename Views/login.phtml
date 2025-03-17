@@ -1,0 +1,74 @@
+<?php
+require('template/header.phtml');
+?>
+
+    <!-- Main content of the page -->
+    <main>
+        <!-- Login form section -->
+        <section class="login-form">
+            <!-- Container for the login form with padding -->
+            <div class="container py-5">
+                <!-- Center the login form horizontally -->
+                <div class="row justify-content-center">
+                    <!-- Set the width of the login form for medium screens -->
+                    <div class="col-md-6">
+                        <!-- Card styling for the login form with shadow and no border -->
+                        <div class="card p-5 shadow-lg border-0">
+                            <!-- Centered content inside the card -->
+                            <div class="text-center">
+                                <!-- Display the ecoBuddy logo -->
+                                <img src="Views/images/EcoBuddy-logo.png" alt="ecoBuddy Logo" class="logo mb-4" width="120">
+                                <!-- Welcome -->
+                                <h1 class="mb-3"><strong>Welcome to ecoBuddy</strong></h1>
+                                <!-- Subheading with a brief description -->
+                                <p class="lead mb-4">Login to manage and track eco-friendly facilities with ease</p>
+                            </div>
+
+                            <!-- Display error message if login fails -->
+                            <?php if (isset($_SESSION['error'])): ?>
+                                <div class="alert alert-danger text-center">
+                                    <?= htmlspecialchars($_SESSION['error']); ?>
+                                </div>
+                                <?php unset($_SESSION['error']); // Clear the error message after displaying it ?>
+                            <?php endif; ?>
+
+                            <!-- Login form with method POST and action to login.php -->
+                            <form method="post" action="login.php">
+                                <!-- Username input field -->
+                                <div class="login-label">
+                                    <label for="username" class="form-label"><strong>Username</strong></label>
+                                    <input type="text" class="form-control" id="username" name="username" required>
+                                </div>
+
+                                <!-- Password input field -->
+                                <div class="login-label">
+                                    <label for="password" class="form-label"><strong>Password</strong></label>
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                </div>
+
+                                <!-- Math Equation Verification (CAPTCHA-like feature) -->
+                                <div class="login-label">
+                                    <label for="math_answer" class="form-label"><strong>What is <?= htmlspecialchars($_SESSION['math_equation'] ?? '0 + 0'); ?>?</strong></label>
+                                    <input type="number" class="form-control" id="math_answer" name="math_answer" required>
+                                </div>
+
+                                <!-- Submit button for the login form -->
+                                <div class="d-grid">
+                                    <button type="submit" name="login" class="btn btn-success btn-lg">Login</button>
+                                </div>
+                            </form>
+
+                            <!-- Forgot password link -->
+                            <div class="forgot-password">
+                                <a href="#" class="forgot-link">Forgot Password?</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<?php
+require('template/footer.phtml');
+?>

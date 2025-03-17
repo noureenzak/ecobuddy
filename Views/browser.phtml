@@ -1,0 +1,110 @@
+<?php require('template/header.phtml'); ?>
+
+    <div class="browse-container">
+        <h1>Browse Eco-Friendly Facilities</h1>
+
+        <!-- Search Form -->
+        <form method="get" action="browser.php" class="search-form">
+            <input type="text" name="q" placeholder="Search..." value="<?= htmlspecialchars($view->query ?? ''); ?>">
+            <button type="submit">Search</button>
+        </form>
+
+        <!-- Facilities Table -->
+        <div class="responsive-table">
+            <table class="facility-table">
+                <thead>
+                <tr>
+                    <!-- Table headers -->
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>House No.</th>
+                    <th>Street</th>
+                    <th>County</th>
+                    <th>Town</th>
+                    <th>Postcode</th>
+                    <th>Longitude</th>
+                    <th>Latitude</th>
+                    <th>Contributor</th>
+                    <th>Status</th>
+                    <!-- Show the "Action" column only for logged-in browsing users (role == 2) -->
+                    <?php if (isset($_SESSION['user_id']) && $_SESSION['role'] == 2): ?>
+                        <th>Action</th>
+                    <?php endif; ?>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Loop through facilities and display them in the table -->
+                <?php if (!empty($view->facilities)): ?>
+                    <?php foreach ($view->facilities as $facility): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($facility['id']); ?></td>
+                            <td><?= htmlspecialchars($facility['title']); ?></td>
+                            <td><?= htmlspecialchars($facility['category']); ?></td>
+                            <td><?= htmlspecialchars($facility['description']); ?></td>
+                            <td><?= htmlspecialchars($facility['houseNumber']); ?></td>
+                            <td><?= htmlspecialchars($facility['streetName']); ?></td>
+                            <td><?= htmlspecialchars($facility['county']); ?></td>
+                            <td><?= htmlspecialchars($facility['town']); ?></td>
+                            <td><?= htmlspecialchars($facility['postcode']); ?></td>
+                            <td><?= htmlspecialchars($facility['lng']); ?></td>
+                            <td><?= htmlspecialchars($facility['lat']); ?></td>
+                            <td><?= htmlspecialchars($facility['contributor']); ?></td>
+                            <td>
+                                <?php if (isset($_SESSION['user_id']) && $_SESSION['role'] == 2): ?>
+                                    <!-- Status Dropdown for Browsing Users -->
+                                    <form method="post" action="browser.php">
+                                        <input type="hidden" name="id" value="<?= htmlspecialchars($facility['id']); ?>">
+                                        <select name="statusComment">
+                                            <?php foreach ($view->allowedStatuses as $status): ?>
+                                                <option value="<?= htmlspecialchars($status); ?>" <?= ($facility['statusComment'] === $status ? 'selected' : ''); ?>>
+                                                    <?= htmlspecialchars($status); ?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                        <button type="submit" name="update_status">Update</button>
+                                    </form>
+                                <?php else: ?>
+                                    <!-- Display Status for Non-Browsing Users -->
+                                    <?= htmlspecialchars($facility['statusComment'] ?? 'Pending'); ?>
+                                <?php endif; ?>
+                            </td>
+                            <?php if (isset($_SESSION['user_id']) && $_SESSION['role'] == 2): ?>
+                                <td>
+                                    <!-- Update Button for Browsing Users -->
+                                    <form method="post" action="browser.php">
+                                        <input type="hidden" name="id" value="<?= htmlspecialchars($facility['id']); ?>">
+                                        <button type="submit" name="update_status">Update</button>
+                                    </form>
+                                </td>
+                            <?php endif; ?>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <!-- Display a message if no facilities are found -->
+
+                        <td colspan="14">No facilities found.</td>
+                    </tr>
+                <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <!-- Loop through pages and create pagination links -->
+
+            <?php for ($i = 1; $i <= $view->totalPages; $i++): ?>
+                <a href="browser.php?page=<?= $i; ?>&q=<?= $view->query ?? ''; ?>&filter=<?= $view->filter ?? ''; ?>&sort=<?= $view->sort ?? ''; ?>"
+                   class="<?= $i == $view->currentPage ? 'active' : ''; ?>">
+                    <!-- Link to each page, with the current page highlighted -->
+
+                    <?= $i; ?>
+                </a>
+            <?php endfor; ?>
+        </div>
+    </div>
+
+<?php require('template/footer.phtml'); ?>
